@@ -24,24 +24,38 @@ const experiences: ExperienceItem[] = [
       "I actively participated in the development of Demand Side Platform (DSP) and Supply Side Platform (SSP) software tailored for Digital Out-Of-Home (DOOH) screens, implementing a micro-services architecture and leveraging various desktop and web technologies for advertising purposes",
       "I conceived and brought to life a planner module with the specific goal of empowering administrators to effortlessly configure campaigns. By streamlining this process, we aimed to maximise efficiency and minimise time spent on manual configuration tasks",
     ],
-    technologies: ["Angular", "React", "JavaScript", "Node.js", "TypeScript", "Nest.js", "Sequelize", "PostgreSQL", "Docker", "Kubernetes", "AWS"],
+    technologies: [
+      "Angular",
+      "React",
+      "JavaScript",
+      "Node.js",
+      "TypeScript",
+      "Nest.js",
+      "Sequelize",
+      "PostgreSQL",
+      "Docker",
+      "Kubernetes",
+      "AWS",
+    ],
   },
   {
     title: "Software Engineer Intern",
     company: "UPCRED",
-    companyLogo: "https://media.licdn.com/dms/image/v2/D4D0BAQFBiPq-JjUUXg/company-logo_200_200/company-logo_200_200/0/1719472961041/upcred_logo?e=2147483647&v=beta&t=ZEOWkAY0CZe12YAO2z79LhPuj07JCK_fR6k1rz1PD1g",
+    companyLogo:
+      "https://media.licdn.com/dms/image/v2/D4D0BAQFBiPq-JjUUXg/company-logo_200_200/company-logo_200_200/0/1719472961041/upcred_logo?e=2147483647&v=beta&t=ZEOWkAY0CZe12YAO2z79LhPuj07JCK_fR6k1rz1PD1g",
     duration: "Oct 2021 - Dec 2021",
     description: [
       "Developed and maintained web applications using modern JavaScript frameworks",
       "Collaborated seamlessly with development teams on Influencer Marketing projects, leveraging Bitbucket as our central repository and harnessing the power of React for frontend development",
-      "Integrated scroll-triggered animations into our User Interface, I elevated user experience to new heights, ensuring seamless interaction and engagement"
+      "Integrated scroll-triggered animations into our User Interface, I elevated user experience to new heights, ensuring seamless interaction and engagement",
     ],
-    technologies: ["JavaScript","TypeScript","React","CSS","Git","AOS"],
+    technologies: ["JavaScript", "TypeScript", "React", "CSS", "Git", "AOS"],
   },
   {
     title: "Full Stack Developer Intern",
     company: "SkyHype",
-    companyLogo: "https://scontent.fjai10-1.fna.fbcdn.net/v/t39.30808-6/222807320_339955934497038_5176675288617082885_n.jpg?_nc_cat=105&ccb=1-7&_nc_sid=6ee11a&_nc_ohc=cFAlGz_WKiwQ7kNvgECwgWH&_nc_zt=23&_nc_ht=scontent.fjai10-1.fna&_nc_gid=A6Wnh1zqErhWsVg7BeSEUZ4&oh=00_AYD3WGboOnXBcdHS7m5ljBirC4xGWzQXK-h0mXMGZrca0Q&oe=67904C30",
+    companyLogo:
+      "https://scontent.fjai10-1.fna.fbcdn.net/v/t39.30808-6/222807320_339955934497038_5176675288617082885_n.jpg?_nc_cat=105&ccb=1-7&_nc_sid=6ee11a&_nc_ohc=cFAlGz_WKiwQ7kNvgECwgWH&_nc_zt=23&_nc_ht=scontent.fjai10-1.fna&_nc_gid=A6Wnh1zqErhWsVg7BeSEUZ4&oh=00_AYD3WGboOnXBcdHS7m5ljBirC4xGWzQXK-h0mXMGZrca0Q&oe=67904C30",
     duration: "Jun 2021 - Sep 2021",
     description: [
       "Developed and maintained web applications using modern JavaScript frameworks",
@@ -58,7 +72,7 @@ const Experience = () => {
         <h2 className="text-3xl md:text-4xl font-bold text-center bg-clip-text text-transparent bg-gradient-to-b from-neutral-50 to-neutral-400 mb-16">
           Professional Journey
         </h2>
-        
+
         <div className="relative">
           {/* Timeline line */}
           <div className="absolute left-4 md:left-1/2 h-full w-0.5 bg-gradient-to-b from-blue-500 to-purple-500" />
@@ -109,7 +123,7 @@ const Experience = () => {
                       >
                         {experience.title}
                       </CardItem>
-                      
+
                       <CardItem
                         as="p"
                         translateZ="60"
@@ -117,7 +131,7 @@ const Experience = () => {
                       >
                         {experience.company}
                       </CardItem>
-                      
+
                       <CardItem
                         as="p"
                         translateZ="40"
@@ -125,7 +139,7 @@ const Experience = () => {
                       >
                         {experience.duration}
                       </CardItem>
-                      
+
                       <CardItem
                         translateZ="30"
                         className="text-neutral-300 space-y-2 mb-4"
@@ -139,7 +153,7 @@ const Experience = () => {
                           ))}
                         </ul>
                       </CardItem>
-                      
+
                       <CardItem translateZ="20" className="mt-auto">
                         <div className="flex flex-wrap gap-2">
                           {experience.technologies.map((tech, idx) => (
@@ -166,4 +180,4 @@ const Experience = () => {
   );
 };
 
-export default Experience; 
+export default Experience;
