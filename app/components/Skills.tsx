@@ -58,28 +58,36 @@ const SkillBar = ({
   proficiency: number;
 }) => {
   return (
-    <motion.div
-      initial={{ opacity: 0, x: -20 }}
-      whileInView={{ opacity: 1, x: 0 }}
-      transition={{ duration: 0.5 }}
-      viewport={{ once: true }}
-      className="relative"
-    >
-      <div className="flex items-center gap-3 mb-2">
-        <span className="text-xl">{icon}</span>
-        <span className="text-neutral-200 font-medium">{name}</span>
-        <span className="ml-auto text-neutral-400 text-sm">{proficiency}%</span>
-      </div>
+    <div className="relative">
+      <motion.div
+        initial={{ opacity: 0, x: -20 }}
+        whileInView={{ opacity: 1, x: 0 }}
+        transition={{ duration: 0.5 }}
+        viewport={{ once: true }}
+      >
+        <div className="flex items-center gap-3 mb-2">
+          <span className="text-xl">{icon}</span>
+          <span className="text-neutral-200 font-medium">{name}</span>
+          <span className="ml-auto text-neutral-400 text-sm">
+            {proficiency}%
+          </span>
+        </div>
+      </motion.div>
       <div className="h-2 bg-slate-700/50 rounded-full overflow-hidden">
         <motion.div
           initial={{ width: 0 }}
           whileInView={{ width: `${proficiency}%` }}
           transition={{ duration: 1, delay: 0.2 }}
           viewport={{ once: true }}
-          className="h-full bg-gradient-to-r from-blue-500 to-purple-500 rounded-full"
+          style={{
+            height: "100%",
+            background:
+              "linear-gradient(to right, rgb(59, 130, 246), rgb(168, 85, 247))",
+            borderRadius: "9999px",
+          }}
         />
       </div>
-    </motion.div>
+    </div>
   );
 };
 
@@ -131,7 +139,7 @@ const Skills = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.2 }}
-          className="mt-16 text-center text-neutral-400"
+          style={{ textAlign: "center", color: "rgb(163 163 163)" }}
         >
           <p>
             Always learning and exploring new technologies to stay at the

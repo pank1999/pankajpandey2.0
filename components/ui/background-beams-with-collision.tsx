@@ -112,9 +112,10 @@ const CollisionMechanism = React.forwardRef<
       duration?: number;
       delay?: number;
       repeatDelay?: number;
+      style?: React.CSSProperties;
     };
   }
->(({ parentRef, containerRef, beamOptions = {} }, ref) => {
+>(({ parentRef, containerRef, beamOptions = {} }) => {
   const beamRef = useRef<HTMLDivElement>(null);
   const [collision, setCollision] = useState<{
     detected: boolean;
@@ -158,7 +159,7 @@ const CollisionMechanism = React.forwardRef<
     const animationInterval = setInterval(checkCollision, 50);
 
     return () => clearInterval(animationInterval);
-  }, [cycleCollisionDetected, containerRef]);
+  }, [cycleCollisionDetected, containerRef, parentRef]);
 
   useEffect(() => {
     if (collision.detected && collision.coordinates) {
@@ -199,10 +200,18 @@ const CollisionMechanism = React.forwardRef<
           delay: beamOptions.delay || 0,
           repeatDelay: beamOptions.repeatDelay || 0,
         }}
-        className={cn(
-          "absolute left-0 top-20 m-auto h-14 w-px rounded-full bg-gradient-to-t from-indigo-500 via-purple-500 to-transparent",
-          beamOptions.className
-        )}
+        style={{
+          position: "absolute",
+          left: 0,
+          top: "5rem",
+          margin: "auto",
+          height: "3.5rem",
+          width: "1px",
+          borderRadius: "9999px",
+          background:
+            "linear-gradient(to top, rgb(99 102 241), rgb(168 85 247), transparent)",
+          ...beamOptions.style,
+        }}
       />
       <AnimatePresence>
         {collision.detected && collision.coordinates && (
@@ -239,8 +248,19 @@ const Explosion = ({ ...props }: React.HTMLProps<HTMLDivElement>) => {
         animate={{ opacity: 1 }}
         exit={{ opacity: 0 }}
         transition={{ duration: 1.5, ease: "easeOut" }}
-        className="absolute -inset-x-10 top-0 m-auto h-2 w-10 rounded-full bg-gradient-to-r from-transparent via-indigo-500 to-transparent blur-sm"
-      ></motion.div>
+        style={{
+          position: "absolute",
+          insetInline: "-2.5rem",
+          top: 0,
+          margin: "auto",
+          height: "0.5rem",
+          width: "2.5rem",
+          borderRadius: "9999px",
+          background:
+            "linear-gradient(to right, transparent, rgb(99 102 241), transparent)",
+          filter: "blur(4px)",
+        }}
+      />
       {spans.map((span) => (
         <motion.span
           key={span.id}
@@ -251,7 +271,14 @@ const Explosion = ({ ...props }: React.HTMLProps<HTMLDivElement>) => {
             opacity: 0,
           }}
           transition={{ duration: Math.random() * 1.5 + 0.5, ease: "easeOut" }}
-          className="absolute h-1 w-1 rounded-full bg-gradient-to-b from-indigo-500 to-purple-500"
+          style={{
+            position: "absolute",
+            height: "0.25rem",
+            width: "0.25rem",
+            borderRadius: "9999px",
+            background:
+              "linear-gradient(to bottom, rgb(99 102 241), rgb(168 85 247))",
+          }}
         />
       ))}
     </div>

@@ -31,8 +31,11 @@ export const MovingBorderBtn = ({
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        className="absolute inset-0"
-        style={{ borderRadius }}
+        style={{
+          position: "absolute",
+          inset: 0,
+          borderRadius,
+        }}
       >
         <div className="absolute inset-0 bg-gradient-to-r from-blue-500 to-purple-500 opacity-0 group-hover:opacity-100 blur-sm transition-opacity" />
         <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity">

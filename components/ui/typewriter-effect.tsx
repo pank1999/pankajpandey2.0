@@ -6,14 +6,15 @@ import { useEffect } from "react";
 export const TypewriterEffect = ({
   words,
   className,
-  cursorClassName,
+  cursorStyle,
 }: {
   words: {
     text: string;
     className?: string;
+    style?: React.CSSProperties;
   }[];
   className?: string;
-  cursorClassName?: string;
+  cursorStyle?: React.CSSProperties;
 }) => {
   const [scope, animate] = useAnimate();
   const isInView = useInView(scope);
@@ -37,7 +38,10 @@ export const TypewriterEffect = ({
     return (
       <motion.span
         key={`${word}-${idx}`}
-        className={cn("opacity-0", word.className)}
+        style={{
+          opacity: 0,
+          ...word.style,
+        }}
       >
         {word.text}
         {idx === words.length - 1 ? "" : "\u00A0"}
@@ -54,19 +58,25 @@ export const TypewriterEffect = ({
       )}
     >
       {renderWords}
-      <motion.span
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{
-          duration: 0.8,
-          repeat: Infinity,
-          repeatType: "reverse",
-        }}
-        className={cn(
-          "inline-block rounded-sm w-[4px] h-4 md:h-6 lg:h-8 bg-blue-500",
-          cursorClassName
-        )}
-      />
+      <div className="inline-block h-4 md:h-6 lg:h-8">
+        <motion.span
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{
+            duration: 0.8,
+            repeat: Infinity,
+            repeatType: "reverse",
+          }}
+          style={{
+            display: "inline-block",
+            borderRadius: "0.125rem",
+            width: "4px",
+            height: "100%",
+            backgroundColor: "rgb(59 130 246)",
+            ...cursorStyle,
+          }}
+        />
+      </div>
     </div>
   );
 };

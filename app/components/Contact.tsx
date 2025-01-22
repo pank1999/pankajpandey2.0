@@ -44,6 +44,13 @@ const Contact = () => {
     // Handle form submission
   };
 
+  const motionDivProps = {
+    initial: { opacity: 0, x: 20 },
+    animate: { opacity: 1, x: 0 },
+    transition: { duration: 0.5, delay: 0.2 },
+    className: "flex flex-col justify-center",
+  } as const;
+
   return (
     <section className="py-20 bg-slate-900">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -133,12 +140,7 @@ const Contact = () => {
           </motion.div>
 
           {/* Contact Info */}
-          <motion.div
-            initial={{ opacity: 0, x: 20 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.5, delay: 0.2 }}
-            className="flex flex-col justify-center"
-          >
+          <motion.div {...motionDivProps}>
             <BackgroundGradient className="rounded-[22px] p-1">
               <div className="bg-slate-900 rounded-[20px] p-8">
                 <h3 className="text-2xl font-bold text-neutral-200 mb-4">

@@ -79,100 +79,104 @@ const Experience = () => {
 
           {/* Experience items */}
           {experiences.map((experience, index) => (
-            <motion.div
+            <div
               key={index}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: index * 0.2 }}
-              viewport={{ once: true }}
               className={`relative flex flex-col md:flex-row gap-8 mb-16 ${
                 index % 2 === 0 ? "md:flex-row-reverse" : ""
               }`}
             >
-              {/* Timeline dot */}
-              <div className="absolute left-4 md:left-1/2 w-4 h-4 rounded-full bg-blue-500 transform -translate-x-1/2 mt-6">
-                <div className="w-4 h-4 rounded-full bg-blue-500 animate-ping" />
-              </div>
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: index * 0.2 }}
+                viewport={{ once: true }}
+                style={{ width: "100%" }}
+              >
+                {/* Timeline dot */}
+                <div className="absolute left-4 md:left-1/2 w-4 h-4 rounded-full bg-blue-500 transform -translate-x-1/2 mt-6">
+                  <div className="w-4 h-4 rounded-full bg-blue-500 animate-ping" />
+                </div>
 
-              {/* Content */}
-              <div className="ml-12 md:ml-0 md:w-1/2">
-                <CardContainer className="inter-var">
-                  <CardBody className="bg-slate-800 relative group/card dark:hover:shadow-2xl dark:hover:shadow-emerald-500/[0.1] dark:bg-slate-800 dark:border-white/[0.2] border-black/[0.1] w-auto sm:w-[30rem] h-auto rounded-xl p-6 border">
-                    {/* Company Logo Section */}
-                    <CardItem
-                      translateZ="100"
-                      className="absolute -top-12 left-1/2 transform -translate-x-1/2"
-                    >
-                      <div className="w-24 h-24 rounded-full bg-slate-900 p-2 shadow-lg border border-slate-600">
-                        <div className="relative w-full h-full rounded-full overflow-hidden">
-                          <Image
-                            src={experience.companyLogo}
-                            alt={`${experience.company} logo`}
-                            fill
-                            className="object-contain p-2"
-                          />
+                {/* Content */}
+                <div className="ml-12 md:ml-0 md:w-1/2">
+                  <CardContainer className="inter-var">
+                    <CardBody className="bg-slate-800 relative group/card dark:hover:shadow-2xl dark:hover:shadow-emerald-500/[0.1] dark:bg-slate-800 dark:border-white/[0.2] border-black/[0.1] w-auto sm:w-[30rem] h-auto rounded-xl p-6 border">
+                      {/* Company Logo Section */}
+                      <CardItem
+                        translateZ="100"
+                        className="absolute -top-12 left-1/2 transform -translate-x-1/2"
+                      >
+                        <div className="w-24 h-24 rounded-full bg-slate-900 p-2 shadow-lg border border-slate-600">
+                          <div className="relative w-full h-full rounded-full overflow-hidden">
+                            <Image
+                              src={experience.companyLogo}
+                              alt={`${experience.company} logo`}
+                              fill
+                              className="object-contain p-2"
+                            />
+                          </div>
                         </div>
+                      </CardItem>
+
+                      {/* Main Content with more spacing from top for logo */}
+                      <div className="mt-14">
+                        <CardItem
+                          translateZ="50"
+                          className="text-xl font-bold text-neutral-200 mb-1"
+                        >
+                          {experience.title}
+                        </CardItem>
+
+                        <CardItem
+                          as="p"
+                          translateZ="60"
+                          className="text-blue-400 font-semibold mb-2"
+                        >
+                          {experience.company}
+                        </CardItem>
+
+                        <CardItem
+                          as="p"
+                          translateZ="40"
+                          className="text-neutral-400 text-sm mb-4"
+                        >
+                          {experience.duration}
+                        </CardItem>
+
+                        <CardItem
+                          translateZ="30"
+                          className="text-neutral-300 space-y-2 mb-4"
+                        >
+                          <ul>
+                            {experience.description.map((item, idx) => (
+                              <li key={idx} className="flex items-start mb-2">
+                                <span className="mr-2 text-blue-500">•</span>
+                                {item}
+                              </li>
+                            ))}
+                          </ul>
+                        </CardItem>
+
+                        <CardItem translateZ="20" className="mt-auto">
+                          <div className="flex flex-wrap gap-2">
+                            {experience.technologies.map((tech, idx) => (
+                              <span
+                                key={idx}
+                                className="px-3 py-1 text-sm bg-slate-700/50 text-blue-400 rounded-full 
+                                  border border-slate-600 hover:border-blue-500 transition-colors
+                                  backdrop-blur-sm group-hover/card:bg-slate-700/70"
+                              >
+                                {tech}
+                              </span>
+                            ))}
+                          </div>
+                        </CardItem>
                       </div>
-                    </CardItem>
-
-                    {/* Main Content with more spacing from top for logo */}
-                    <div className="mt-14">
-                      <CardItem
-                        translateZ="50"
-                        className="text-xl font-bold text-neutral-200 mb-1"
-                      >
-                        {experience.title}
-                      </CardItem>
-
-                      <CardItem
-                        as="p"
-                        translateZ="60"
-                        className="text-blue-400 font-semibold mb-2"
-                      >
-                        {experience.company}
-                      </CardItem>
-
-                      <CardItem
-                        as="p"
-                        translateZ="40"
-                        className="text-neutral-400 text-sm mb-4"
-                      >
-                        {experience.duration}
-                      </CardItem>
-
-                      <CardItem
-                        translateZ="30"
-                        className="text-neutral-300 space-y-2 mb-4"
-                      >
-                        <ul>
-                          {experience.description.map((item, idx) => (
-                            <li key={idx} className="flex items-start mb-2">
-                              <span className="mr-2 text-blue-500">•</span>
-                              {item}
-                            </li>
-                          ))}
-                        </ul>
-                      </CardItem>
-
-                      <CardItem translateZ="20" className="mt-auto">
-                        <div className="flex flex-wrap gap-2">
-                          {experience.technologies.map((tech, idx) => (
-                            <span
-                              key={idx}
-                              className="px-3 py-1 text-sm bg-slate-700/50 text-blue-400 rounded-full 
-                                border border-slate-600 hover:border-blue-500 transition-colors
-                                backdrop-blur-sm group-hover/card:bg-slate-700/70"
-                            >
-                              {tech}
-                            </span>
-                          ))}
-                        </div>
-                      </CardItem>
-                    </div>
-                  </CardBody>
-                </CardContainer>
-              </div>
-            </motion.div>
+                    </CardBody>
+                  </CardContainer>
+                </div>
+              </motion.div>
+            </div>
           ))}
         </div>
       </div>
