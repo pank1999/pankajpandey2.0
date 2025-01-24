@@ -3,7 +3,9 @@ import React from "react";
 import { motion } from "framer-motion";
 import { CardBody, CardContainer, CardItem } from "@/components/ui/3d-card";
 import Image from "next/image";
-
+import skyhypeLogo from "@/public/images/skyhype.png";
+import upcredLogo from "@/public/images/upcred_logo.jpeg";
+import wisfluxLogo from "@/public/images/wisflux.png";
 interface ExperienceItem {
   title: string;
   company: string;
@@ -17,7 +19,7 @@ const experiences: ExperienceItem[] = [
   {
     title: "Software Engineer-Full Stack ",
     company: "Wisflux Private Limited",
-    companyLogo: "https://avatars.githubusercontent.com/u/24906873?s=200&v=4",
+    companyLogo: wisfluxLogo.src,
     duration: "Sep 2022 - Present",
     description: [
       "Led development of multiple full-stack applications using Angular, React, Node.js, and TypeScript",
@@ -41,8 +43,7 @@ const experiences: ExperienceItem[] = [
   {
     title: "Software Engineer Intern",
     company: "UPCRED",
-    companyLogo:
-      "https://media.licdn.com/dms/image/v2/D4D0BAQFBiPq-JjUUXg/company-logo_200_200/company-logo_200_200/0/1719472961041/upcred_logo?e=2147483647&v=beta&t=ZEOWkAY0CZe12YAO2z79LhPuj07JCK_fR6k1rz1PD1g",
+    companyLogo: upcredLogo.src,
     duration: "Oct 2021 - Dec 2021",
     description: [
       "Developed and maintained web applications using modern JavaScript frameworks",
@@ -54,8 +55,7 @@ const experiences: ExperienceItem[] = [
   {
     title: "Full Stack Developer Intern",
     company: "SkyHype",
-    companyLogo:
-      "https://scontent.fjai10-1.fna.fbcdn.net/v/t39.30808-6/222807320_339955934497038_5176675288617082885_n.jpg?_nc_cat=105&ccb=1-7&_nc_sid=6ee11a&_nc_ohc=cFAlGz_WKiwQ7kNvgECwgWH&_nc_zt=23&_nc_ht=scontent.fjai10-1.fna&_nc_gid=A6Wnh1zqErhWsVg7BeSEUZ4&oh=00_AYD3WGboOnXBcdHS7m5ljBirC4xGWzQXK-h0mXMGZrca0Q&oe=67904C30",
+    companyLogo: skyhypeLogo.src,
     duration: "Jun 2021 - Sep 2021",
     description: [
       "Developed and maintained web applications using modern JavaScript frameworks",
@@ -98,7 +98,11 @@ const Experience = () => {
                 </div>
 
                 {/* Content */}
-                <div className="ml-12 md:ml-0 md:w-1/2">
+                <div
+                  className={`ml-12 md:ml-0 ${
+                    index % 2 === 0 ? "md:ml-[50%]" : "md:mr-[50%]"
+                  } md:w-1/2`}
+                >
                   <CardContainer className="inter-var">
                     <CardBody className="bg-slate-800 relative group/card dark:hover:shadow-2xl dark:hover:shadow-emerald-500/[0.1] dark:bg-slate-800 dark:border-white/[0.2] border-black/[0.1] w-auto sm:w-[30rem] h-auto rounded-xl p-6 border">
                       {/* Company Logo Section */}

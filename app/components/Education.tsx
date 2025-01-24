@@ -3,7 +3,8 @@ import React from "react";
 import { motion } from "framer-motion";
 import Image from "next/image";
 import { BackgroundGradient } from "@/components/ui/background-gradient";
-import pankaj from "@/public/images/pankaj.png";
+import rgpvLogo from "@/public/images/rgpv_logo.png";
+import bloomsLogo from "@/public/images/blooms.jpeg";
 
 interface EducationItem {
   institution: string;
@@ -22,7 +23,7 @@ const educationData: EducationItem[] = [
     duration: "2018 - 2022",
     location: "Satna,Madhya Pradesh",
     gpa: "8.59 CGPA",
-    logo: pankaj.src,
+    logo: rgpvLogo.src,
     courses: [
       "Data Structures & Algorithms",
       "Operating Systems",
@@ -38,7 +39,7 @@ const educationData: EducationItem[] = [
     duration: "2017 - 2018",
     location: "Satna, Madhya Pradesh",
     gpa: "61% GPA",
-    logo: pankaj.src,
+    logo: bloomsLogo.src,
     courses: ["Mathematics", "Physics", "Chemistry", "Computer", "English"],
   },
 ];
