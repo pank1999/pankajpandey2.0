@@ -67,13 +67,26 @@ const Hero = () => {
           <div className="flex items-center justify-center gap-4">
             <MovingBorderBtn
               borderRadius="0.5rem"
-              className="bg-slate-900 text-white border-neutral-200 dark:border-slate-800"
+              className="bg-slate-900 text-white border-2 border-white/[0.2] hover:border-white/[0.4] dark:border-slate-800 cursor-pointer px-8 py-4 transition-colors duration-200"
+              onClick={() => {
+                document
+                  .getElementById("contact")
+                  ?.scrollIntoView({ behavior: "smooth" });
+              }}
             >
               Contact Me
             </MovingBorderBtn>
 
             <BackgroundGradient className="rounded-[22px] p-1 dark:bg-slate-800">
-              <button className="px-8 py-4 rounded-[20px] bg-slate-900 text-white">
+              <button
+                className="px-8 py-4 rounded-[20px] bg-slate-900 text-white"
+                onClick={() =>
+                  window.open(
+                    "https://drive.google.com/file/d/1afIMKyOHxI9Og34-R9-HNFgjOGbKN7h4/view?usp=sharing",
+                    "_blank"
+                  )
+                }
+              >
                 Download Resume
               </button>
             </BackgroundGradient>
