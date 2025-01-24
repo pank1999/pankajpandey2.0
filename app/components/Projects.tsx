@@ -6,7 +6,9 @@ import Image from "next/image";
 import Link from "next/link";
 import fileSVG from "@/public/file.svg";
 import marketingSaas from "@/public/images/marketing-saas.png";
-import chat from "@/public/images/chat.jpg";
+import chat from "@/public/images/chat-app.jpg";
+import videoTranscoder from "@/public/images/video-trancoding.webp";
+import eCommerceApp from "@/public/images/e-commerce-app.jpg";
 
 interface ProjectItem {
   title: string;
@@ -33,9 +35,9 @@ const projectsData: ProjectItem[] = [
     title: "E-commerce Dashboard",
     description:
       "Full-stack e-commerce admin dashboard with real-time analytics, inventory management, and order processing capabilities.",
-    image: fileSVG.src,
-    link: "https://ecommerce-dashboard.pankajpandey.dev",
-    github: "https://github.com/pank1999/ecommerce-dashboard",
+    image: eCommerceApp.src,
+    link: "https://github.com/pank1999/Myshop-E-commerce-app",
+    github: "https://github.com/pank1999/Myshop-E-commerce-app",
     tags: ["React", "Node.js", "MongoDB", "Express", "Redux"],
     featured: true,
   },
@@ -44,8 +46,18 @@ const projectsData: ProjectItem[] = [
     description:
       "Real-time chat application powered by AI for smart responses and language translation. Built with WebSocket for instant messaging.",
     image: chat.src,
-    link: "https://chat-app.pankajpandey.dev",
-    github: "https://github.com/pank1999/ai-chat-app",
+    link: "https://github.com/pank1999/scaleable-chat-app",
+    github: "https://github.com/pank1999/scaleable-chat-app",
+    tags: ["WebSocket", "AI", "React", "Node.js", "Socket.io"],
+    featured: false,
+  },
+  {
+    title: "Video Transcoder",
+    description:
+      "Real-time chat application powered by AI for smart responses and language translation. Built with WebSocket for instant messaging.",
+    image: videoTranscoder.src,
+    link: "https://github.com/pank1999/video-transcoder",
+    github: "https://github.com/pank1999/video-transcoder",
     tags: ["WebSocket", "AI", "React", "Node.js", "Socket.io"],
     featured: false,
   },

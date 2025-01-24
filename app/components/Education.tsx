@@ -42,6 +42,15 @@ const educationData: EducationItem[] = [
     logo: bloomsLogo.src,
     courses: ["Mathematics", "Physics", "Chemistry", "Computer", "English"],
   },
+  {
+    institution: "Blooms Academy",
+    degree: "High School",
+    duration: "2015 - 2016",
+    location: "Satna, Madhya Pradesh",
+    gpa: "71% GPA",
+    logo: bloomsLogo.src,
+    courses: ["Mathematics", "Hindi", "Social Science", "Computer", "English"],
+  },
 ];
 
 // Fixed positions for particles to avoid hydration mismatch

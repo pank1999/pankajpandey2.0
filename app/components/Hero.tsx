@@ -31,7 +31,7 @@ const Hero = () => {
 
   return (
     <BackgroundBeamsWithCollision>
-      <div className="h-[85vh] relative w-full overflow-hidden bg-slate-900 flex flex-col items-center justify-center rounded-lg">
+      <div className="h-[100vh] relative w-full overflow-hidden bg-slate-900 flex flex-col items-center justify-center">
         <div className="absolute inset-0 w-full h-full bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:34px_34px]">
           <div className="absolute inset-0 bg-slate-900/90" />
         </div>
