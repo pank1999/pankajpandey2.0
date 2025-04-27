@@ -77,9 +77,9 @@ const Hero = () => {
               Contact Me
             </MovingBorderBtn>
 
-            <BackgroundGradient className="rounded-[22px] p-1 dark:bg-slate-800">
+            <BackgroundGradient className="rounded-[10px] p-1 dark:bg-slate-800">
               <button
-                className="px-8 py-4 rounded-[20px] bg-slate-900 text-white"
+                className="px-8 py-4 rounded-[10px] bg-slate-900 text-white"
                 onClick={() =>
                   window.open(
                     "https://drive.google.com/file/d/1afIMKyOHxI9Og34-R9-HNFgjOGbKN7h4/view?usp=sharing",

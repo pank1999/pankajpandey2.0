@@ -28,7 +28,7 @@ export const TypewriterEffect = ({
         },
         {
           duration: 0.1,
-          delay: stagger(0.1),
+          delay: stagger(0.2),
         }
       );
     }
@@ -53,7 +53,7 @@ export const TypewriterEffect = ({
     <div
       ref={scope}
       className={cn(
-        "text-base md:text-xl lg:text-2xl font-bold text-center",
+        "text-white md:text-xl lg:text-2xl font-bold text-center",
         className
       )}
     >

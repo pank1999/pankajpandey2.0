@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@emailjs/browser": "^4.4.1",
     "@geist-ui/core": "^2.3.8",
     "@vercel/analytics": "^1.1.1",
     "class-variance-authority": "0.7.1",

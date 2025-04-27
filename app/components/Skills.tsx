@@ -141,7 +141,7 @@ const Skills = () => {
           transition={{ duration: 0.5, delay: 0.2 }}
           style={{ textAlign: "center", color: "rgb(163 163 163)" }}
         >
-          <p>
+          <p className="mt-8 text-lg">
             Always learning and exploring new technologies to stay at the
             cutting edge of web development.
           </p>
