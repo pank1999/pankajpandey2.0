@@ -5,9 +5,11 @@ import { BackgroundGradient } from "@/components/ui/background-gradient";
 import { TypewriterEffect } from "@/components/ui/typewriter-effect";
 import { MovingBorderBtn } from "@/components/ui/moving-border";
 import { BackgroundBeamsWithCollision } from "@/components/ui/background-beams-with-collision";
+import profileImage from "@/public/images/pankaj.png";
+import me from "@/public/images/me.jpeg";
 
-const profileImg =
-  "https://media.licdn.com/dms/image/v2/D4D03AQGfFuY7HFlZRw/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1664300536397?e=2147483647&v=beta&t=MeZFnnYIMkZk6dHUF4P9T5hIqX5OZf5BwlnhJnF1qIU";
+const profileImg = profileImage.src;
+const meImg = me.src;
 
 const Hero = () => {
   const words = [
@@ -42,7 +44,7 @@ const Hero = () => {
             <div className="absolute inset-0 rounded-full bg-gradient-to-r from-blue-500 to-purple-500 animate-spin-slow" />
             <div className="absolute inset-[3px] rounded-full bg-slate-900" />
             <Image
-              src={profileImg} // Make sure to add your profile image to the public folder
+              src={meImg} // Make sure to add your profile image to the public folder
               alt="Pankaj Pandey"
               width={192}
               height={192}

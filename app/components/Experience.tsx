@@ -6,6 +6,8 @@ import Image from "next/image";
 import skyhypeLogo from "@/public/images/skyhype.png";
 import upcredLogo from "@/public/images/upcred_logo.jpeg";
 import wisfluxLogo from "@/public/images/wisflux.png";
+import optimeleonLogo from "@/public/images/optimeleon-logo.png";
+
 interface ExperienceItem {
   title: string;
   company: string;
@@ -17,10 +19,42 @@ interface ExperienceItem {
 
 const experiences: ExperienceItem[] = [
   {
+    title: "Software Engineer Full Stack",
+    company: "Optimeleon AI Pvt. Limited",
+    companyLogo: optimeleonLogo.src,
+    duration: "Mar 2025 - Present",
+    description: [
+      "Developed a scalable web application integrated with AI and LLMs, enabling seamless data retrieval and dynamic content generation for websites.",
+      "Built a web scraping system to extract data from client websites, automating the creation of optimized variants and reducing manual effort by 75%",
+      "Implemented background job processing for intensive tasks, improving real-time tracking and calculation of conversion events by 100%.",
+      "Designed and enhanced a user dashboard to display actionable insights and performance metrics, increasing user engagement by 30%",
+    ],
+    technologies: [
+      "Next.js",
+      "React",
+      "JavaScript",
+      "Node.js",
+      "TypeScript",
+      "Python",
+      "Prisma",
+      "PostgreSQL",
+      "Docker",
+      "Kubernetes",
+      "Azure",
+      "Inngest",
+      "Redis",
+      "Langchain",
+      "OpenAI API",
+      "Playwright",
+      "clickhouse",
+      "posthog",
+    ],
+  },
+  {
     title: "Software Engineer-Full Stack ",
     company: "Wisflux Private Limited",
     companyLogo: wisfluxLogo.src,
-    duration: "Sep 2022 - Present",
+    duration: "Sep 2022 - Feb 2025",
     description: [
       "Led development of multiple full-stack applications using Angular, React, Node.js, and TypeScript",
       "I actively participated in the development of Demand Side Platform (DSP) and Supply Side Platform (SSP) software tailored for Digital Out-Of-Home (DOOH) screens, implementing a micro-services architecture and leveraging various desktop and web technologies for advertising purposes",
