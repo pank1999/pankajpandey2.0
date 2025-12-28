@@ -60,7 +60,7 @@ const Hero = () => {
           <TypewriterEffect words={words} />
 
           <p className="text-neutral-300 max-w-lg mx-auto text-base md:text-lg">
-            A dedicated Full Stack Developer with 2.5+ years of professional
+            A dedicated Full Stack Developer with 3+ years of professional
             experience in designing, developing, and deploying scalable digital
             solutions. Proficient in crafting seamless user experiences and
             robust backend systems for diverse applications

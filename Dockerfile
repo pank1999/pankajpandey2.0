@@ -29,6 +29,10 @@ COPY . .
 # Uncomment the following line in case you want to disable telemetry during the build.
 # ENV NEXT_TELEMETRY_DISABLED=1
 
+# Build-time environment variables (if needed for static optimization)
+# ARG OPENAI_API_KEY
+# ENV OPENAI_API_KEY=$OPENAI_API_KEY
+
 RUN \
     if [ -f yarn.lock ]; then yarn run build; \
     elif [ -f package-lock.json ]; then npm run build; \

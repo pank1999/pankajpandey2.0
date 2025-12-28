@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { GeistSans } from "geist/font/sans";
 import "./globals.css";
+import Chatbot from "./components/Chatbot";
 
 export const metadata: Metadata = {
   title: "Pankaj Pandey | Software Engineer",
@@ -66,7 +67,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${GeistSans.className} antialiased`}>{children}</body>
+      <body className={`${GeistSans.className} antialiased`}>
+        {children}
+        <Chatbot />
+      </body>
     </html>
   );
 }
