@@ -29,8 +29,10 @@ const nextConfig = {
       },
     ],
   },
-  // Remove output: "standalone" for Vercel deployment
-  // Use standalone only for Docker deployments
+  // Optimize build for Vercel
+  experimental: {
+    optimizePackageImports: ["lucide-react", "framer-motion"],
+  },
 };
 
 module.exports = nextConfig;
