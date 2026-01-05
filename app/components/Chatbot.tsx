@@ -100,24 +100,41 @@ export default function Chatbot() {
         },
       ]);
 
-      // Read stream with optimized rendering
+      // Read stream with optimized rendering and typing effect
       let updateCounter = 0;
+      let buffer = "";
+      const typingDelay = 20; // milliseconds per character for realistic typing
+      let hasStartedTyping = false;
+
       while (true) {
         const { done, value } = await reader.read();
         if (done) break;
 
         const chunk = decoder.decode(value, { stream: true });
-        assistantContent += chunk;
-        updateCounter++;
+        buffer += chunk;
 
-        // Update UI every chunk for smooth streaming effect
-        setMessages((prev) =>
-          prev.map((msg) =>
-            msg.id === assistantMessageId
-              ? { ...msg, content: assistantContent }
-              : msg
-          )
-        );
+        // Process buffered characters with typing delay
+        for (const char of chunk) {
+          // Hide loading animation when first character starts typing
+          if (!hasStartedTyping) {
+            setIsLoading(false);
+            hasStartedTyping = true;
+          }
+
+          assistantContent += char;
+          updateCounter++;
+
+          // Update UI with slight delay for typing effect
+          await new Promise((resolve) => setTimeout(resolve, typingDelay));
+
+          setMessages((prev) =>
+            prev.map((msg) =>
+              msg.id === assistantMessageId
+                ? { ...msg, content: assistantContent }
+                : msg
+            )
+          );
+        }
       }
 
       // Final update to ensure complete message is rendered
@@ -136,6 +153,7 @@ export default function Chatbot() {
         setError(err.message || "An error occurred");
       }
     } finally {
+      // Only set loading to false if typing hasn't started yet (in case of error)
       setIsLoading(false);
       abortControllerRef.current = null;
     }
@@ -162,7 +180,7 @@ export default function Chatbot() {
           className={`fixed z-50 bg-slate-900 rounded-2xl shadow-2xl border border-slate-700 flex flex-col overflow-hidden transition-all duration-300 ${
             isExpanded
               ? "inset-4 md:inset-8"
-              : "bottom-6 right-6 w-[380px] h-[600px]"
+              : "bottom-1 lg:bottom-6 lg:right-6 md:w-[310px] lg:w-[380px] h-[600px]"
           }`}
         >
           {/* Header */}
@@ -315,11 +333,24 @@ export default function Chatbot() {
               </div>
             ))}
 
-            {/* Loading Indicator */}
+            {/* Loading Indicator - Three Dots Wave */}
             {isLoading && (
               <div className="flex justify-start">
-                <div className="bg-slate-800 border border-slate-700 rounded-2xl px-4 py-2">
-                  <Loader2 className="w-5 h-5 text-blue-500 animate-spin" />
+                <div className="bg-slate-800 border border-slate-700 rounded-2xl px-6 py-3">
+                  <div className="flex space-x-1.5">
+                    <div
+                      className="w-2 h-2 bg-blue-500 rounded-full animate-wave"
+                      style={{ animationDelay: "0ms" }}
+                    />
+                    <div
+                      className="w-2 h-2 bg-blue-500 rounded-full animate-wave"
+                      style={{ animationDelay: "150ms" }}
+                    />
+                    <div
+                      className="w-2 h-2 bg-blue-500 rounded-full animate-wave"
+                      style={{ animationDelay: "300ms" }}
+                    />
+                  </div>
                 </div>
               </div>
             )}
@@ -362,6 +393,25 @@ export default function Chatbot() {
           </div>
         </div>
       )}
+
+      {/* Custom CSS for wave animation */}
+      <style jsx>{`
+        @keyframes wave {
+          0%,
+          60%,
+          100% {
+            transform: translateY(0);
+            opacity: 0.6;
+          }
+          30% {
+            transform: translateY(-8px);
+            opacity: 1;
+          }
+        }
+        .animate-wave {
+          animation: wave 1.4s ease-in-out infinite;
+        }
+      `}</style>
     </>
   );
 }

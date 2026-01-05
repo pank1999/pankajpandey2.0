@@ -69,7 +69,7 @@ const Hero = () => {
           <div className="flex items-center justify-center gap-4">
             <MovingBorderBtn
               borderRadius="0.5rem"
-              className="bg-slate-900 text-white border-2 border-white/[0.2] hover:border-white/[0.4] dark:border-slate-800 cursor-pointer px-8 py-4 transition-colors duration-200"
+              className="bg-slate-900 text-white border-2 border-white/[0.2] hover:border-white/[0.4] dark:border-slate-800 cursor-pointer px-4 py-2 lg:px-8 lg:py-4 transition-colors duration-200"
               onClick={() => {
                 document
                   .getElementById("contact")
@@ -81,7 +81,7 @@ const Hero = () => {
 
             <BackgroundGradient className="rounded-[10px] p-1 dark:bg-slate-800">
               <button
-                className="px-8 py-4 rounded-[10px] bg-slate-900 text-white"
+                className="px-4 py-2 lg:px-8  lg:py-4 rounded-[10px] bg-slate-900 text-white"
                 onClick={() =>
                   window.open(
                     "https://drive.google.com/file/d/1afIMKyOHxI9Og34-R9-HNFgjOGbKN7h4/view?usp=sharing",
