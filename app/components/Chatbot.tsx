@@ -76,7 +76,11 @@ export default function Chatbot() {
       });
 
       if (!response.ok) {
-        throw new Error(`API error: ${response.statusText}`);
+        if (response.status === 429) {
+          throw new Error("Rate limit reached. You can send up to 5 messages per minute. Please wait a minute.");
+        }
+        const errJson = await response.json().catch(() => null);
+        throw new Error(errJson?.error || `API error: ${response.statusText}`);
       }
 
       // Handle streaming response
@@ -376,6 +380,7 @@ export default function Chatbot() {
                 onChange={(e) => setInput(e.target.value)}
                 placeholder="Type your message..."
                 disabled={isLoading}
+                maxLength={500}
                 className="flex-1 bg-slate-900 text-white placeholder-slate-400 rounded-xl px-4 py-2 border border-slate-700 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
               />
               <button
@@ -387,9 +392,14 @@ export default function Chatbot() {
                 <Send className="w-5 h-5" />
               </button>
             </form>
-            <p className="text-xs text-slate-500 mt-2 text-center">
-              Powered by OpenAI GPT-4
-            </p>
+            <div className="flex items-center justify-between text-xs text-slate-500 mt-2 px-1">
+              <span>Powered by OpenAI GPT-4o-mini</span>
+              {input.length > 300 && (
+                <span className={input.length >= 480 ? "text-red-400 font-semibold" : "text-slate-400"}>
+                  {input.length}/500
+                </span>
+              )}
+            </div>
           </div>
         </div>
       )}
