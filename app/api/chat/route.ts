@@ -1,11 +1,7 @@
 import OpenAI from "openai";
 
-// Create an OpenAI API client
-const openai = new OpenAI({
-  apiKey: process.env.OPENAI_API_KEY || "",
-});
-
 export const runtime = "edge";
+export const maxDuration = 30;
 
 // System prompt with your professional context
 const SYSTEM_PROMPT = `You are Pankaj Pandey's personal AI assistant on his portfolio website. You're helpful, friendly, and knowledgeable about Pankaj's professional background.
@@ -147,6 +143,10 @@ export async function POST(req: Request) {
         status: 500,
       });
     }
+
+    const openai = new OpenAI({
+      apiKey: process.env.OPENAI_API_KEY,
+    });
 
     // Create a chat completion with streaming
     const response = await openai.chat.completions.create({

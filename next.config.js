@@ -29,10 +29,6 @@ const nextConfig = {
       },
     ],
   },
-  // Optimize build for Vercel
-  experimental: {
-    optimizePackageImports: ["lucide-react", "framer-motion"],
-  },
 };
 
 module.exports = nextConfig;
