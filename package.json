@@ -12,6 +12,7 @@
     "@ai-sdk/openai": "^3.0.1",
     "@emailjs/browser": "^4.4.1",
     "@geist-ui/core": "^2.3.8",
+    "@types/three": "^0.185.4",
     "@vercel/analytics": "^1.1.1",
     "ai": "^6.0.3",
     "class-variance-authority": "0.7.1",
@@ -27,7 +28,8 @@
     "remark-gfm": "^4.0.1",
     "sharp": "^0.33.2",
     "tailwind-merge": "2.0.0",
-    "tailwindcss-animate": "1.0.7"
+    "tailwindcss-animate": "1.0.7",
+    "three": "^0.185.1"
   },
   "overrides": {},
   "devDependencies": {

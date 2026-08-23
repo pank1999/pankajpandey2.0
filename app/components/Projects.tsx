@@ -1,10 +1,8 @@
 "use client";
-import React, { useRef } from "react";
-import { motion, useScroll, useTransform } from "framer-motion";
-import { BackgroundGradient } from "@/components/ui/background-gradient";
+import React from "react";
+import { motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
-import fileSVG from "@/public/file.svg";
 import marketingSaas from "@/public/images/marketing-saas.png";
 import chat from "@/public/images/chat-app.jpg";
 import videoTranscoder from "@/public/images/video-trancoding.webp";
@@ -12,6 +10,7 @@ import eCommerceApp from "@/public/images/e-commerce-app.jpg";
 
 interface ProjectItem {
   title: string;
+  subtitle: string;
   description: string;
   image: string;
   link: string;
@@ -22,207 +21,161 @@ interface ProjectItem {
 
 const projectsData: ProjectItem[] = [
   {
-    title: "Marketing Saas",
+    title: "Marketing SaaS Automation",
+    subtitle: "AI Web Scraping & Variant Generation Platform",
     description:
-      "Modern portfolio website built with Next.js 14, Tailwind CSS, and Framer Motion. Features smooth animations, responsive design, and interactive UI components.",
+      "Full-stack AI marketing suite that automatically scrapes client websites, generates optimized content variants using OpenAI LLMs, and schedules campaign delivery with Background Inngest queues.",
     image: marketingSaas.src,
     link: "https://marketing-saas.pankajpandey.dev",
     github: "https://github.com/pank1999/marketing-saas",
-    tags: ["Next.js", "React", "Tailwind CSS", "Framer Motion", "TypeScript"],
+    tags: ["Next.js 14", "React", "TypeScript", "Tailwind CSS", "Inngest", "OpenAI", "Playwright"],
     featured: true,
   },
   {
-    title: "E-commerce Dashboard",
+    title: "E-Commerce Admin Dashboard",
+    subtitle: "Real-Time Inventory & Analytics Hub",
     description:
-      "Full-stack e-commerce admin dashboard with real-time analytics, inventory management, and order processing capabilities.",
+      "Enterprise e-commerce portal with real-time sales reporting, revenue analytics charts, order processing workflows, and comprehensive inventory management.",
     image: eCommerceApp.src,
     link: "https://github.com/pank1999/Myshop-E-commerce-app",
     github: "https://github.com/pank1999/Myshop-E-commerce-app",
-    tags: ["React", "Node.js", "MongoDB", "Express", "Redux"],
+    tags: ["React", "Node.js", "Express", "MongoDB", "Redux", "Tailwind CSS"],
     featured: true,
   },
   {
-    title: "Scalable Chat Application",
+    title: "Scalable Real-Time Chat System",
+    subtitle: "AI Translation & Low-Latency WebSockets",
     description:
-      "Real-time chat application powered by AI for smart responses and language translation. Built with WebSocket for instant messaging.",
+      "Distributed instant messaging engine powered by WebSockets, Redis message brokers, and automated multilingual AI translation.",
     image: chat.src,
     link: "https://github.com/pank1999/scaleable-chat-app",
     github: "https://github.com/pank1999/scaleable-chat-app",
-    tags: ["WebSocket", "AI", "React", "Node.js", "Socket.io"],
+    tags: ["WebSocket", "Socket.io", "AI", "Node.js", "Redis", "React"],
     featured: false,
   },
   {
-    title: "Video Transcoder",
+    title: "Cloud Video Transcoding Engine",
+    subtitle: "Distributed Microservices Video Transcoder",
     description:
-      "Real-time chat application powered by AI for smart responses and language translation. Built with WebSocket for instant messaging.",
+      "Asynchronous video processing service converting user video uploads into adaptive HLS streaming formats with queue management and cloud storage.",
     image: videoTranscoder.src,
     link: "https://github.com/pank1999/video-transcoder",
     github: "https://github.com/pank1999/video-transcoder",
-    tags: ["WebSocket", "AI", "React", "Node.js", "Socket.io"],
+    tags: ["Node.js", "FFmpeg", "AWS S3", "Docker", "Express", "Redis"],
     featured: false,
   },
 ];
 
-const ProjectCard = ({ project }: { project: ProjectItem }) => {
-  const cardRef = useRef<HTMLDivElement>(null);
-  const { scrollYProgress } = useScroll({
-    target: cardRef,
-    offset: ["0 1", "1.5 1"],
-  });
-  const scaleProgress = useTransform(scrollYProgress, [0, 1], [0.8, 1]);
-  const opacityProgress = useTransform(scrollYProgress, [0, 1], [0.3, 1]);
-
-  return (
-    <div className="mb-8 last:mb-0">
-      <motion.div
-        ref={cardRef}
-        style={{
-          scale: scaleProgress,
-          opacity: opacityProgress,
-        }}
-      >
-        <BackgroundGradient className="rounded-[22px] p-1 h-full">
-          <div className="bg-slate-900 rounded-[20px] p-6 h-full flex flex-col md:flex-row gap-8">
-            {/* Project Image */}
-            <div className="relative w-full md:w-1/2 h-[300px] rounded-lg overflow-hidden group">
-              <Image
-                src={project.image}
-                alt={project.title}
-                fill
-                className="object-cover transform group-hover:scale-110 transition-transform duration-500"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-slate-900 to-transparent opacity-60" />
-
-              {/* Hover Overlay */}
-              <div className="absolute inset-0 bg-blue-500/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center gap-4">
-                <Link
-                  href={project.link}
-                  target="_blank"
-                  className="bg-slate-900/80 p-3 rounded-full hover:bg-slate-800 transition-colors"
-                >
-                  <svg
-                    className="w-5 h-5 text-white"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
-                    />
-                  </svg>
-                </Link>
-                <Link
-                  href={project.github}
-                  target="_blank"
-                  className="bg-slate-900/80 p-3 rounded-full hover:bg-slate-800 transition-colors"
-                >
-                  <svg
-                    className="w-5 h-5 text-white"
-                    fill="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      fillRule="evenodd"
-                      d="M12 2C6.477 2 2 6.477 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33.85 0 1.71.11 2.5.33 1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0012 2z"
-                      clipRule="evenodd"
-                    />
-                  </svg>
-                </Link>
-              </div>
-            </div>
-
-            {/* Project Info */}
-            <div className="flex-1 flex flex-col justify-center">
-              <h3 className="text-2xl font-bold text-neutral-200 mb-3">
-                {project.title}
-              </h3>
-              <p className="text-neutral-400 text-base mb-6">
-                {project.description}
-              </p>
-
-              {/* Tags */}
-              <div className="flex flex-wrap gap-2">
-                {project.tags.map((tag, idx) => (
-                  <span
-                    key={idx}
-                    className="px-3 py-1 text-xs bg-slate-800 text-blue-400 rounded-full border border-slate-700/50"
-                  >
-                    {tag}
-                  </span>
-                ))}
-              </div>
-            </div>
-          </div>
-        </BackgroundGradient>
-      </motion.div>
-    </div>
-  );
-};
-
 const Projects = () => {
-  const containerRef = useRef<HTMLDivElement>(null);
-  const { scrollYProgress } = useScroll({
-    target: containerRef,
-    offset: ["start start", "end end"],
-  });
-
-  const backgroundY = useTransform(scrollYProgress, [0, 1], ["0%", "100%"]);
-  const textY = useTransform(scrollYProgress, [0, 1], ["0%", "200%"]);
-
   return (
-    <section
-      ref={containerRef}
-      className="py-20 bg-slate-900 relative overflow-hidden"
-    >
-      {/* Parallax Background */}
-      <div className="absolute inset-0 opacity-40">
-        <motion.div
-          style={{
-            y: backgroundY,
-            position: "absolute",
-            inset: 0,
-          }}
-        >
-          <div className="absolute inset-0 bg-gradient-to-b from-blue-500/20 via-purple-500/20 to-transparent" />
-          <div className="absolute inset-0 bg-[radial-gradient(circle_500px_at_50%_200px,#3b82f6,transparent)]" />
-        </motion.div>
-      </div>
+    <section id="projects" className="py-24 bg-[#060913] relative overflow-hidden">
+      {/* Background glow orb */}
+      <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[600px] h-[600px] bg-gradient-to-br from-cyan-500/10 via-purple-600/10 to-transparent rounded-full blur-[150px] pointer-events-none" />
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
-        {/* Section Header */}
-        <div className="flex flex-col items-center mb-16">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        
+        {/* Header */}
+        <div className="text-center max-w-3xl mx-auto mb-20 space-y-4">
           <motion.div
-            style={{
-              y: textY,
-            }}
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
           >
-            <div className="relative">
-              <div className="text-4xl md:text-5xl font-bold text-center bg-clip-text text-transparent bg-gradient-to-b from-neutral-50 to-neutral-400">
-                <motion.span
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5 }}
-                >
-                  Featured Projects
-                </motion.span>
-              </div>
-              <div className="absolute -bottom-4 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-blue-500/50 to-transparent" />
-            </div>
+            <span className="text-cyan-400 text-xs font-mono font-bold uppercase tracking-widest px-3.5 py-1.5 rounded-full glass-panel border border-cyan-500/30">
+              Featured Work
+            </span>
+            <h2 className="text-4xl md:text-5xl font-extrabold mt-4 tracking-tight">
+              <span className="gradient-text-silver">Crafted </span>
+              <span className="gradient-text-cyan-purple">Projects</span>
+            </h2>
+            <p className="text-slate-400 text-base md:text-lg mt-3">
+              Explore high-performance web apps, AI automation systems, and microservice architectures built for scale.
+            </p>
           </motion.div>
         </div>
 
-        {/* Projects List */}
-        <div className="space-y-24">
+        {/* Projects Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {projectsData.map((project, index) => (
-            <ProjectCard key={index} project={project} />
+            <motion.div
+              key={project.title}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: index * 0.15 }}
+              className="glass-panel glass-panel-hover rounded-3xl overflow-hidden border border-white/10 flex flex-col group"
+            >
+              {/* Image Preview Container */}
+              <div className="relative w-full h-64 overflow-hidden bg-slate-950">
+                <Image
+                  src={project.image}
+                  alt={project.title}
+                  fill
+                  className="object-cover transform group-hover:scale-105 transition-transform duration-700 ease-out"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#060913] via-[#060913]/30 to-transparent" />
+                
+                {/* Featured Badge */}
+                {project.featured && (
+                  <div className="absolute top-4 left-4 px-3 py-1 rounded-full bg-cyan-500/20 border border-cyan-400/50 text-cyan-300 text-xs font-mono font-bold shadow-[0_0_10px_rgba(0,240,255,0.4)] backdrop-blur-md">
+                    ⭐ Featured Project
+                  </div>
+                )}
+
+                {/* Hover Quick Buttons */}
+                <div className="absolute inset-0 bg-[#060913]/80 opacity-0 group-hover:opacity-100 transition-opacity duration-300 backdrop-blur-sm flex items-center justify-center gap-4">
+                  <Link
+                    href={project.link}
+                    target="_blank"
+                    className="px-4 py-2.5 rounded-xl bg-cyan-500 text-slate-950 font-bold text-xs uppercase tracking-wider hover:bg-cyan-300 shadow-[0_0_15px_rgba(0,240,255,0.5)] transition-all flex items-center gap-1.5"
+                  >
+                    Live Demo 🚀
+                  </Link>
+                  <Link
+                    href={project.github}
+                    target="_blank"
+                    className="px-4 py-2.5 rounded-xl glass-panel text-slate-200 border border-purple-500/50 font-bold text-xs uppercase tracking-wider hover:border-cyan-400 hover:text-cyan-300 transition-all flex items-center gap-1.5"
+                  >
+                    GitHub 💻
+                  </Link>
+                </div>
+              </div>
+
+              {/* Card Body */}
+              <div className="p-6 sm:p-8 flex-1 flex flex-col justify-between">
+                <div>
+                  <h3 className="text-2xl font-bold text-slate-100 group-hover:text-cyan-300 transition-colors">
+                    {project.title}
+                  </h3>
+                  <p className="text-cyan-400 font-mono text-xs mt-1 font-medium">
+                    {project.subtitle}
+                  </p>
+                  <p className="text-slate-300 text-sm mt-4 leading-relaxed">
+                    {project.description}
+                  </p>
+                </div>
+
+                {/* Tech Tags */}
+                <div className="flex flex-wrap gap-2 mt-6 pt-4 border-t border-slate-800">
+                  {project.tags.map((tag, tIdx) => (
+                    <span
+                      key={tIdx}
+                      className="px-3 py-1 rounded-full text-xs font-mono text-cyan-300 bg-cyan-950/50 border border-cyan-500/30"
+                    >
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            </motion.div>
           ))}
         </div>
+
       </div>
     </section>
   );
 };
 
 export default Projects;
+

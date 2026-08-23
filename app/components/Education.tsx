@@ -2,7 +2,6 @@
 import React from "react";
 import { motion } from "framer-motion";
 import Image from "next/image";
-import { BackgroundGradient } from "@/components/ui/background-gradient";
 import rgpvLogo from "@/public/images/rgpv_logo.png";
 import bloomsLogo from "@/public/images/blooms.jpeg";
 
@@ -19,169 +18,147 @@ interface EducationItem {
 const educationData: EducationItem[] = [
   {
     institution: "RGPV University Bhopal",
-    degree: "Bachelor of Technology in Computer Science",
+    degree: "Bachelor of Technology in Computer Science & Engineering",
     duration: "2018 - 2022",
-    location: "Satna,Madhya Pradesh",
+    location: "Madhya Pradesh, India",
     gpa: "8.59 CGPA",
     logo: rgpvLogo.src,
     courses: [
       "Data Structures & Algorithms",
       "Operating Systems",
-      "Database Management",
+      "Database Management Systems",
       "Computer Networks",
-      "Web Development",
+      "Web Application Development",
       "Software Engineering",
     ],
   },
   {
     institution: "Blooms Academy",
-    degree: "High Secondary",
+    degree: "Higher Secondary Certificate (Physics, Math, CS)",
     duration: "2017 - 2018",
     location: "Satna, Madhya Pradesh",
-    gpa: "61% GPA",
+    gpa: "61% Grade",
     logo: bloomsLogo.src,
-    courses: ["Mathematics", "Physics", "Chemistry", "Computer", "English"],
+    courses: ["Mathematics", "Physics", "Chemistry", "Computer Science", "English"],
   },
   {
     institution: "Blooms Academy",
-    degree: "High School",
+    degree: "High School Secondary Education",
     duration: "2015 - 2016",
     location: "Satna, Madhya Pradesh",
-    gpa: "71% GPA",
+    gpa: "71% Grade",
     logo: bloomsLogo.src,
-    courses: ["Mathematics", "Hindi", "Social Science", "Computer", "English"],
+    courses: ["Mathematics", "Computer Science", "Science", "Social Studies", "English"],
   },
-];
-
-// Fixed positions for particles to avoid hydration mismatch
-const particlePositions = [
-  { top: "20%", left: "20%" },
-  { top: "60%", left: "50%" },
-  { top: "30%", left: "80%" },
 ];
 
 const Education = () => {
   return (
-    <section className="py-20 bg-slate-900">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
-        <div className="flex flex-col items-center mb-16">
-          <div className="relative">
-            <div className="text-4xl md:text-5xl font-bold text-center bg-clip-text text-transparent bg-gradient-to-b from-neutral-50 to-neutral-400">
-              <motion.span
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5 }}
-              >
-                Education
-              </motion.span>
-            </div>
-            <div className="absolute -bottom-4 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-blue-500/50 to-transparent" />
-          </div>
+    <section id="education" className="py-24 bg-[#060913] relative overflow-hidden">
+      {/* Ambient background glow */}
+      <div className="absolute top-1/2 left-1/4 w-[450px] h-[450px] bg-purple-600/10 rounded-full blur-[130px] pointer-events-none" />
+
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        
+        {/* Header */}
+        <div className="text-center max-w-3xl mx-auto mb-16 space-y-4">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+          >
+            <span className="text-purple-400 text-xs font-mono font-bold uppercase tracking-widest px-3.5 py-1.5 rounded-full glass-panel border border-purple-500/30">
+              Academic Background
+            </span>
+            <h2 className="text-4xl md:text-5xl font-extrabold mt-4 tracking-tight">
+              <span className="gradient-text-silver">Education & </span>
+              <span className="gradient-text-cyan-purple">Credentials</span>
+            </h2>
+            <p className="text-slate-400 text-base md:text-lg mt-3">
+              Strong foundation in Computer Science fundamentals, algorithm design, and core software engineering principles.
+            </p>
+          </motion.div>
         </div>
 
-        <div className="grid grid-cols-1 gap-8">
+        {/* Education Cards Stack */}
+        <div className="space-y-8">
           {educationData.map((edu, index) => (
-            <div key={index} className="relative group">
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: index * 0.2 }}
-              >
-                <BackgroundGradient className="rounded-[22px]">
-                  <div className="relative bg-slate-900 backdrop-blur-xl rounded-[20px] p-8 overflow-hidden border border-slate-800">
-                    {/* Floating Particles Background */}
-                    <div className="absolute inset-0 overflow-hidden">
-                      {particlePositions.map((pos, i) => (
-                        <div
-                          key={i}
-                          className="absolute w-2 h-2 bg-blue-500/10 rounded-full animate-float"
-                          style={{
-                            top: pos.top,
-                            left: pos.left,
-                            animationDelay: `${i * 2}s`,
-                          }}
-                        />
-                      ))}
-                    </div>
-
-                    <div className="grid md:grid-cols-[1fr_2fr] gap-8">
-                      {/* Left Column - Logo and Basic Info */}
-                      <div className="flex flex-col items-center text-center space-y-4">
-                        <div className="relative w-32 h-32 rounded-2xl bg-slate-800 p-4 ring-2 ring-blue-500/20 group-hover:ring-blue-500/50 transition-all duration-300">
-                          <Image
-                            src={edu.logo}
-                            alt={`${edu.institution} logo`}
-                            fill
-                            className="object-contain p-2"
-                          />
-                        </div>
-                        <div>
-                          <h3 className="text-xl font-bold text-blue-400 mb-1">
-                            {edu.institution}
-                          </h3>
-                          <p className="text-neutral-300">{edu.location}</p>
-                          <div className="mt-2 inline-flex items-center px-3 py-1 rounded-full bg-emerald-500/10 text-emerald-400 text-sm">
-                            {edu.gpa}
-                          </div>
-                        </div>
-                      </div>
-
-                      {/* Right Column - Degree and Courses */}
-                      <div className="space-y-6">
-                        <div>
-                          <h4 className="text-xl font-semibold text-neutral-200 mb-2">
-                            {edu.degree}
-                          </h4>
-                          <p className="text-neutral-400">{edu.duration}</p>
-                        </div>
-
-                        <div>
-                          <h5 className="text-sm font-semibold text-blue-400 mb-3">
-                            Key Courses
-                          </h5>
-                          <div className="grid grid-cols-2 gap-2">
-                            {edu.courses.map((course, idx) => (
-                              <div
-                                key={idx}
-                                className="px-4 py-2 bg-slate-800/50 rounded-xl text-sm text-neutral-300 border border-slate-700/50 hover:border-blue-500/50 transition-colors backdrop-blur-sm group-hover:bg-slate-800/70"
-                              >
-                                {course}
-                              </div>
-                            ))}
-                          </div>
-                        </div>
-                      </div>
+            <motion.div
+              key={index}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: index * 0.15 }}
+              className="glass-panel glass-panel-hover rounded-3xl p-6 sm:p-8 border border-white/10"
+            >
+              <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+                
+                {/* Left Column: Logo & Institution Details */}
+                <div className="lg:col-span-5 flex items-center gap-5 border-b lg:border-b-0 lg:border-r border-slate-800 pb-6 lg:pb-0 lg:pr-8">
+                  <div className="w-20 h-20 rounded-2xl bg-slate-900 border border-slate-700/80 p-2.5 flex items-center justify-center shadow-[0_0_20px_rgba(0,0,0,0.6)] shrink-0">
+                    <div className="relative w-full h-full">
+                      <Image
+                        src={edu.logo}
+                        alt={edu.institution}
+                        fill
+                        className="object-contain"
+                      />
                     </div>
                   </div>
-                </BackgroundGradient>
-              </motion.div>
-            </div>
+
+                  <div className="space-y-1">
+                    <h3 className="text-xl font-bold text-slate-100">
+                      {edu.institution}
+                    </h3>
+                    <p className="text-sm text-slate-400 font-medium">
+                      📍 {edu.location}
+                    </p>
+                    <div className="flex items-center gap-2 pt-1">
+                      <span className="px-3 py-1 rounded-full text-xs font-mono font-bold text-emerald-400 bg-emerald-950/60 border border-emerald-500/30">
+                        {edu.gpa}
+                      </span>
+                      <span className="px-3 py-1 rounded-full text-xs font-mono text-cyan-300 bg-cyan-950/60 border border-cyan-500/30">
+                        {edu.duration}
+                      </span>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Right Column: Degree Name & Courses */}
+                <div className="lg:col-span-7 space-y-4">
+                  <div>
+                    <h4 className="text-xl font-bold text-cyan-300">
+                      {edu.degree}
+                    </h4>
+                  </div>
+
+                  <div>
+                    <p className="text-xs font-mono text-slate-400 uppercase tracking-wider mb-2.5 font-bold">
+                      Key Coursework:
+                    </p>
+                    <div className="flex flex-wrap gap-2">
+                      {edu.courses.map((course, cIdx) => (
+                        <span
+                          key={cIdx}
+                          className="px-3 py-1 rounded-lg text-xs font-mono text-slate-300 bg-slate-900 border border-slate-700/60"
+                        >
+                          {course}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+            </motion.div>
           ))}
         </div>
-      </div>
 
-      <style jsx global>{`
-        @keyframes float {
-          0%,
-          100% {
-            transform: translateY(0) translateX(0);
-          }
-          25% {
-            transform: translateY(-10px) translateX(5px);
-          }
-          50% {
-            transform: translateY(0) translateX(10px);
-          }
-          75% {
-            transform: translateY(10px) translateX(5px);
-          }
-        }
-        .animate-float {
-          animation: float 8s ease-in-out infinite;
-        }
-      `}</style>
+      </div>
     </section>
   );
 };
 
 export default Education;
+

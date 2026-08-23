@@ -1,107 +1,121 @@
 "use client";
 import React from "react";
-import Image from "next/image";
-import { BackgroundGradient } from "@/components/ui/background-gradient";
-import { TypewriterEffect } from "@/components/ui/typewriter-effect";
-import { MovingBorderBtn } from "@/components/ui/moving-border";
-import { BackgroundBeamsWithCollision } from "@/components/ui/background-beams-with-collision";
-import profileImage from "@/public/images/pankaj.png";
-import me from "@/public/images/me.jpeg";
-
-const profileImg = profileImage.src;
-const meImg = me.src;
+import { motion } from "framer-motion";
+import ThreeCanvasHero from "./ThreeCanvasHero";
 
 const Hero = () => {
-  const words = [
-    {
-      text: "Build",
-    },
-    {
-      text: "awesome",
-    },
-    {
-      text: "apps",
-    },
-    {
-      text: "with",
-    },
-    {
-      text: "passion.",
-      className: "text-blue-500 dark:text-blue-500",
-    },
-  ];
-
   return (
-    <BackgroundBeamsWithCollision>
-      <div className="h-[100vh] relative w-full overflow-hidden bg-slate-900 flex flex-col items-center justify-center">
-        <div className="absolute inset-0 w-full h-full bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:34px_34px]">
-          <div className="absolute inset-0 bg-slate-900/90" />
-        </div>
+    <section className="relative min-h-screen w-full flex items-center justify-center overflow-hidden bg-[#060913] pt-20">
+      {/* 3D WebGL Background Canvas */}
+      <ThreeCanvasHero />
 
-        <div className="relative z-10 text-center space-y-8">
-          {/* Profile Photo Section */}
-          <div className="relative mx-auto w-40 h-40 md:w-48 md:h-48">
-            <div className="absolute inset-0 rounded-full bg-gradient-to-r from-blue-500 to-purple-500 animate-spin-slow" />
-            <div className="absolute inset-[3px] rounded-full bg-slate-900" />
-            <Image
-              src={meImg} // Make sure to add your profile image to the public folder
-              alt="Pankaj Pandey"
-              width={192}
-              height={192}
-              className="rounded-full relative z-10 p-1 hover:scale-105 transition-transform duration-300 ease-in-out"
-              priority
-            />
-          </div>
+      {/* Radial Gradient Glow Overlays */}
+      <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-gradient-to-tr from-cyan-500/20 via-purple-600/20 to-pink-500/10 rounded-full blur-[140px] pointer-events-none" />
+      <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(255,255,255,0.03)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.03)_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_50%,#000_70%,transparent_100%)] pointer-events-none" />
 
-          <h1 className="text-4xl md:text-7xl font-bold text-center bg-clip-text text-transparent bg-gradient-to-b from-neutral-50 to-neutral-400">
-            Pankaj Pandey
+      {/* Main Content Container */}
+      <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 text-center py-12 flex flex-col items-center">
+
+        {/* Status Pill Badge */}
+        <motion.div
+          initial={{ scale: 0.9, opacity: 0 }}
+          animate={{ scale: 1, opacity: 1 }}
+          transition={{ duration: 0.6, ease: "easeOut" }}
+          className="mb-6 inline-flex items-center gap-2 px-4 py-2 rounded-full glass-panel border border-cyan-400/40 shadow-[0_0_20px_rgba(0,240,255,0.2)]"
+        >
+          <span className="w-2.5 h-2.5 rounded-full bg-cyan-400 animate-pulse shadow-[0_0_10px_#00f0ff]" />
+          <span className="text-xs font-mono font-bold uppercase tracking-wider text-cyan-300">
+            Full Stack Engineer • 4+ Years Exp
+          </span>
+        </motion.div>
+
+        {/* Hero Title */}
+        <motion.div
+          initial={{ y: 20, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          transition={{ duration: 0.8, delay: 0.2 }}
+          className="space-y-4"
+        >
+          <h1 className="text-5xl sm:text-7xl md:text-8xl font-extrabold tracking-tight">
+            <span className="gradient-text-silver block">Pankaj</span>
+            <span className="gradient-text-cyan-purple block mt-1">Pandey</span>
           </h1>
 
-          <TypewriterEffect words={words} />
-
-          <p className="text-neutral-300 max-w-lg mx-auto text-base md:text-lg">
-            A dedicated Full Stack Developer with 3+ years of professional
-            experience in designing, developing, and deploying scalable digital
-            solutions. Proficient in crafting seamless user experiences and
-            robust backend systems for diverse applications
+          <p className="text-xl md:text-2xl font-semibold text-cyan-300 tracking-wide font-mono">
+            Architecting Scalable AI & Web Systems 🚀
           </p>
+        </motion.div>
 
-          <div className="flex items-center justify-center gap-4">
-            <MovingBorderBtn
-              borderRadius="0.5rem"
-              className="bg-slate-900 text-white border-2 border-white/[0.2] hover:border-white/[0.4] dark:border-slate-800 cursor-pointer px-4 py-2 lg:px-8 lg:py-4 transition-colors duration-200"
-              onClick={() => {
-                document
-                  .getElementById("contact")
-                  ?.scrollIntoView({ behavior: "smooth" });
-              }}
-            >
-              Contact Me
-            </MovingBorderBtn>
+        {/* Bio Text */}
+        <motion.p
+          initial={{ y: 20, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          transition={{ duration: 0.8, delay: 0.4 }}
+          className="mt-6 text-slate-300 max-w-2xl text-base sm:text-lg leading-relaxed glass-panel p-6 rounded-2xl border border-white/10 shadow-[0_10px_40px_rgba(0,0,0,0.5)]"
+        >
+          Full Stack Software Engineer with <span className="text-cyan-400 font-semibold">4+ years of professional experience</span> building LLM-integrated platforms, real-time distributed microservices, web automation scrapers, and intuitive web user experiences.
+        </motion.p>
 
-            <BackgroundGradient className="rounded-[10px] p-1 dark:bg-slate-800">
-              <button
-                className="px-4 py-2 lg:px-8  lg:py-4 rounded-[10px] bg-slate-900 text-white"
-                onClick={() =>
-                  window.open(
-                    "https://drive.google.com/file/d/1afIMKyOHxI9Og34-R9-HNFgjOGbKN7h4/view?usp=sharing",
-                    "_blank"
-                  )
-                }
-              >
-                Download Resume
-              </button>
-            </BackgroundGradient>
-          </div>
-        </div>
+        {/* Action Buttons & Quick Highlights */}
+        <motion.div
+          initial={{ y: 20, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          transition={{ duration: 0.8, delay: 0.6 }}
+          className="mt-8 flex flex-wrap items-center justify-center gap-4"
+        >
+          <button
+            onClick={() => {
+              document.getElementById("projects")?.scrollIntoView({ behavior: "smooth" });
+            }}
+            className="group relative px-8 py-4 rounded-xl text-sm font-bold uppercase tracking-wider text-slate-900 bg-gradient-to-r from-cyan-400 via-cyan-300 to-purple-400 shadow-[0_0_25px_rgba(0,240,255,0.4)] hover:shadow-[0_0_35px_rgba(0,240,255,0.7)] hover:scale-105 transition-all duration-300"
+          >
+            Explore Projects ⚡
+          </button>
 
-        {/* Animated background elements */}
-        <div className="absolute inset-0 flex items-center justify-center">
-          <div className="w-[40rem] h-[40rem] bg-[radial-gradient(circle_farthest-side,rgba(255,0,182,.15),transparent)] animate-pulse" />
+          <button
+            onClick={() => {
+              document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" });
+            }}
+            className="px-8 py-4 rounded-xl text-sm font-bold uppercase tracking-wider text-slate-200 glass-panel border border-purple-500/40 hover:border-cyan-400 hover:text-cyan-300 shadow-[0_0_15px_rgba(139,92,246,0.2)] hover:scale-105 transition-all duration-300"
+          >
+            Get In Touch 📬
+          </button>
+        </motion.div>
+
+        {/* Floating Quick Tech Badges */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 1, delay: 0.8 }}
+          className="mt-12 flex flex-wrap justify-center gap-3 text-xs font-mono text-slate-400"
+        >
+          <span className="px-3.5 py-1.5 rounded-full glass-panel border border-cyan-500/20 text-cyan-300">
+            ⚡ Next.js / React
+          </span>
+          <span className="px-3.5 py-1.5 rounded-full glass-panel border border-purple-500/20 text-purple-300">
+            🤖 LLMs & OpenAI
+          </span>
+          <span className="px-3.5 py-1.5 rounded-full glass-panel border border-pink-500/20 text-pink-300">
+            🐳 Docker & Kubernetes
+          </span>
+          <span className="px-3.5 py-1.5 rounded-full glass-panel border border-emerald-500/20 text-emerald-300">
+            🛢️ PostgreSQL & Redis
+          </span>
+        </motion.div>
+      </div>
+
+      {/* Scroll Down Indicator */}
+      <div className="absolute bottom-6 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 pointer-events-none opacity-70">
+        <span className="text-[10px] uppercase font-mono tracking-widest text-cyan-400 animate-pulse">
+          Scroll Down
+        </span>
+        <div className="w-5 h-9 rounded-full border-2 border-cyan-500/40 p-1">
+          <div className="w-1.5 h-2.5 bg-cyan-400 rounded-full mx-auto animate-bounce" />
         </div>
       </div>
-    </BackgroundBeamsWithCollision>
+    </section>
   );
 };
 
 export default Hero;
+

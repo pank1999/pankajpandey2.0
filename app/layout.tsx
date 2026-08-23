@@ -17,9 +17,9 @@ export const metadata: Metadata = {
     "AWS",
     "Kubernetes",
   ],
-  authors: [{ name: "Pankaj Pandey" }],
-  creator: "Pankaj Pandey",
-  publisher: "Pankaj Pandey",
+  authors: [{ name: "Pankaj Kumar Pandey" }],
+  creator: "Pankaj Kumar Pandey",
+  publisher: "Pankaj Kumar Pandey",
   robots: {
     index: true,
     follow: true,
@@ -32,22 +32,22 @@ export const metadata: Metadata = {
     type: "website",
     locale: "en_US",
     url: "https://pankajpandey.dev",
-    title: "Pankaj Pandey | Software Engineer",
+    title: "Pankaj Kumar Pandey | Software Engineer",
     description:
       "Experienced Software Engineer specializing in full-stack development, cloud architecture, and scalable solutions.",
-    siteName: "Pankaj Pandey Portfolio",
+    siteName: "Pankaj Kumar Pandey Portfolio",
     images: [
       {
         url: "/images/og-image.jpg",
         width: 1200,
         height: 630,
-        alt: "Pankaj Pandey - Software Engineer",
+        alt: "Pankaj Kumar Pandey - Software Engineer",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Pankaj Pandey | Software Engineer",
+    title: "Pankaj Kumar Pandey | Software Engineer",
     description:
       "Experienced Software Engineer specializing in full-stack development, cloud architecture, and scalable solutions.",
     images: ["/images/og-image.jpg"],
